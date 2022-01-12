@@ -74,7 +74,7 @@ export default class {
     $('#arrow-icon2').click((e) => this.handleShowTickets(e, bills, 2))
     $('#arrow-icon3').click((e) => this.handleShowTickets(e, bills, 3))
     this.getBillsAllUsers()
-    new Logout({ localStorage, onNavigate })
+    new Logout({ document, localStorage, onNavigate })
   }
 
   handleClickIconEye = () => {

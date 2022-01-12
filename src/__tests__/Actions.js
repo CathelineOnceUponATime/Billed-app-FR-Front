@@ -1,7 +1,9 @@
-import { screen } from "@testing-library/dom"
-import Actions from "../views/Actions.js"
-import '@testing-library/jest-dom/extend-expect'
+/* global describe, test, expect */
+/* eslint no-undef: "error" */
 
+import { screen } from '@testing-library/dom'
+import Actions from '../views/Actions.js'
+import '@testing-library/jest-dom/extend-expect'
 
 describe('Given I am connected as an Employee', () => {
   describe('When I am on Bills page and there are bills', () => {

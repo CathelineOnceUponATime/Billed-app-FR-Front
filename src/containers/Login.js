@@ -11,28 +11,28 @@ export default class Login {
     this.PREVIOUS_LOCATION = PREVIOUS_LOCATION
     this.store = store
     const formEmployee = this.document.querySelector(`form[data-testid="form-employee"]`)
-    formEmployee.addEventListener("submit", this.handleSubmitEmployee)
+    formEmployee.addEventListener('submit', this.handleSubmitEmployee)
     const formAdmin = this.document.querySelector(`form[data-testid="form-admin"]`)
-    formAdmin.addEventListener("submit", this.handleSubmitAdmin)
+    formAdmin.addEventListener('submit', this.handleSubmitAdmin)
   }
   handleSubmitEmployee = e => {
     e.preventDefault()
     const user = {
-      type: "Employee",
+      type: 'Employee',
       email: e.target.querySelector(`input[data-testid="employee-email-input"]`).value,
       password: e.target.querySelector(`input[data-testid="employee-password-input"]`).value,
-      status: "connected"
+      status: 'connected'
     }
-    this.localStorage.setItem("user", JSON.stringify(user))
+    this.localStorage.setItem('user', JSON.stringify(user))
     this.login(user)
       .catch(
         (err) => this.createUser(user)
       )
       .then(() => {
-        this.onNavigate(ROUTES_PATH['Bills'])
-        this.PREVIOUS_LOCATION = ROUTES_PATH['Bills']
+        this.onNavigate(ROUTES_PATH.Bills)
+        this.PREVIOUS_LOCATION = ROUTES_PATH.Bills
         PREVIOUS_LOCATION = this.PREVIOUS_LOCATION
-        this.document.body.style.backgroundColor="#fff"
+        this.document.body.style.backgroundColor = '#fff'
       })
     
   }
@@ -40,21 +40,21 @@ export default class Login {
   handleSubmitAdmin = e => {
     e.preventDefault()
     const user = {
-      type: "Admin",
-      email: e.target.querySelector(`input[data-testid="employee-email-input"]`).value,
-      password: e.target.querySelector(`input[data-testid="employee-password-input"]`).value,
-      status: "connected"
+      type: 'Admin',
+      email: e.target.querySelector(`input[data-testid="admin-email-input"]`).value,
+      password: e.target.querySelector(`input[data-testid="admin-password-input"]`).value,
+      status: 'connected'
     }
-    this.localStorage.setItem("user", JSON.stringify(user))
+    this.localStorage.setItem('user', JSON.stringify(user))
     this.login(user)
       .catch(
         (err) => this.createUser(user)
       )
       .then(() => {
-        this.onNavigate(ROUTES_PATH['Dashboard'])
-        this.PREVIOUS_LOCATION = ROUTES_PATH['Dashboard']
+        this.onNavigate(ROUTES_PATH.Dashboard)
+        this.PREVIOUS_LOCATION = ROUTES_PATH.Dashboard
         PREVIOUS_LOCATION = this.PREVIOUS_LOCATION
-        document.body.style.backgroundColor="#fff"
+        document.body.style.backgroundColor = '#fff'
       })
   }
 

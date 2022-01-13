@@ -116,7 +116,7 @@ export default class {
       commentAdmin: $('#commentary2').val()
     }
     this.updateBill(newBill)
-    this.onNavigate(ROUTES_PATH['Dashboard'])
+    this.onNavigate(ROUTES_PATH.Dashboard)
   }
 
   handleRefuseSubmit = (e, bill) => {
@@ -126,7 +126,7 @@ export default class {
       commentAdmin: $('#commentary2').val()
     }
     this.updateBill(newBill)
-    this.onNavigate(ROUTES_PATH['Dashboard'])
+    this.onNavigate(ROUTES_PAT.Dashboard)
   }
 
   handleShowTickets(e, bills, index) {

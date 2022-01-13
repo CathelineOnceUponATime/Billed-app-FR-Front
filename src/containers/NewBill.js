@@ -24,21 +24,34 @@ export default class NewBill {
     const email = JSON.parse(localStorage.getItem("user")).email
     formData.append('file', file)
     formData.append('email', email)
-
-    this.store
-      .bills()
-      .create({
-        data: formData,
-        headers: {
-          noContentType: true
-        }
-      })
-      .then(({fileUrl, key}) => {
-        console.log(fileUrl)
-        this.billId = key
-        this.fileUrl = fileUrl
-        this.fileName = fileName
-      }).catch(error => console.error(error))
+    let extension
+    let bExtensionCorrecte = false
+    for (let i = 0; i < fileName.length; i++) {
+      if (fileName.charAt(i) === '.') {
+        extension = fileName.substring(i, fileName.length)
+      }
+    }
+    if ((extension === '.jpg') || (extension === '.jpeg') || (extension === '.png')) {
+      bExtensionCorrecte = true
+    }
+    if (bExtensionCorrecte) {
+      this.store
+        .bills()
+        .create({
+          data: formData,
+          headers: {
+            noContentType: true
+          }
+        })
+        .then(({fileUrl, key}) => {
+          console.log(fileUrl)
+          this.billId = key
+          this.fileUrl = fileUrl
+          this.fileName = fileName
+        }).catch(error => console.error(error))
+    } else {
+      alert('extention du fichier doit être soit de .jpg, .jpeg ou .png')
+    }
   }
   handleSubmit = e => {
     e.preventDefault()
@@ -58,7 +71,7 @@ export default class NewBill {
       status: 'pending'
     }
     this.updateBill(bill)
-    this.onNavigate(ROUTES_PATH['Bills'])
+    this.onNavigate(ROUTES_PATH.Bills)
   }
 
   // not need to cover this function by tests
@@ -68,7 +81,7 @@ export default class NewBill {
       .bills()
       .update({data: JSON.stringify(bill), selector: this.billId})
       .then(() => {
-        this.onNavigate(ROUTES_PATH['Bills'])
+        this.onNavigate(ROUTES_PATH.Bills)
       })
       .catch(error => console.error(error))
     }

@@ -1,4 +1,4 @@
-/* global describe, test, expect, jest */
+/* global describe, test, expect, jest, localStorage */
 /* eslint no-undef: "error" */
 
 import { screen } from '@testing-library/dom'

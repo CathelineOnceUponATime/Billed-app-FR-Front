@@ -126,7 +126,7 @@ export default class {
       commentAdmin: $('#commentary2').val()
     }
     this.updateBill(newBill)
-    this.onNavigate(ROUTES_PAT.Dashboard)
+    this.onNavigate(ROUTES_PATH.Dashboard)
   }
 
   handleShowTickets(e, bills, index) {

@@ -1,6 +1,7 @@
 /* global describe, test, expect, jest */
 /* eslint no-undef: "error" */
 
+import { localStorageMock } from '../__mocks__/localStorage.js'
 import LoginUI from '../views/LoginUI'
 import Login from '../containers/Login.js'
 import { ROUTES } from '../constants/routes'

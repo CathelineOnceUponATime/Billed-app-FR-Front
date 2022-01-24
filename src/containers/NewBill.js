@@ -15,6 +15,21 @@ export default class NewBill {
     this.billId = null
     new Logout({ document, localStorage, onNavigate })
   }
+  extensionCorrecte () {
+    const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
+    let extension
+    let bExtensionCorrecte = false
+    for (let i = 0; i < file.name.length; i++) {
+      if (file.name.charAt(i) === '.') {
+        extension = file.name.substring(i, file.name.length)
+        break
+      }
+    }
+    if ((extension === '.jpg') || (extension === '.jpeg') || (extension === '.png')) {
+      bExtensionCorrecte = true
+    }
+    return bExtensionCorrecte
+  }
   handleChangeFile = e => {
     e.preventDefault()
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
@@ -24,17 +39,7 @@ export default class NewBill {
     const email = JSON.parse(localStorage.getItem("user")).email
     formData.append('file', file)
     formData.append('email', email)
-    let extension
-    let bExtensionCorrecte = false
-    for (let i = 0; i < fileName.length; i++) {
-      if (fileName.charAt(i) === '.') {
-        extension = fileName.substring(i, fileName.length)
-      }
-    }
-    if ((extension === '.jpg') || (extension === '.jpeg') || (extension === '.png')) {
-      bExtensionCorrecte = true
-    }
-    if (bExtensionCorrecte) {
+    if (this.extensionCorrecte()) {
       this.store
         .bills()
         .create({
@@ -70,8 +75,13 @@ export default class NewBill {
       fileName: this.fileName,
       status: 'pending'
     }
-    this.updateBill(bill)
-    this.onNavigate(ROUTES_PATH.Bills)
+    if (this.extensionCorrecte()) {
+      this.updateBill(bill)
+      this.onNavigate(ROUTES_PATH.Bills)
+    } else {
+      alert('extention du fichier doit être soit de .jpg, .jpeg ou .png')
+    }
+    
   }
 
   // not need to cover this function by tests

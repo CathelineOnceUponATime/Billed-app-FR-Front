@@ -25,9 +25,22 @@ describe('Given I am connected as an employee', () => {
       }))
       const store = null
       const unBills = new Bills({ document, onNavigate, store, localStorage: window.localStorage })
-      const html = BillsUI({ data: [] })
+      const html = BillsUI({ data: bills })
       document.body.innerHTML = html
       expect(getByTestId(document.body, 'icon-window')).toHaveClass('active-icon')
+    })
+
+    test('test loading', () => {
+      const html = BillsUI({ data: bills, loading: true })
+      document.body.innerHTML = html
+      const loadingDiv = document.getElementById('loading')
+      expect(loadingDiv).not.toBeUndefined()
+    })
+
+    test('test error', () => {
+      const html = BillsUI({ data: bills, error: true })
+      document.body.innerHTML = html
+      expect(getByTestId(document.body, 'error-message')).not.toBeUndefined()
     })
 
     test('Then bills should be ordered from earliest to latest', () => {

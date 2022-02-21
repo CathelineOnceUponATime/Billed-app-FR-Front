@@ -15,6 +15,11 @@ export default class NewBill {
     this.billId = null
     new Logout({ document, localStorage, onNavigate })
   }
+
+  alerteExtension() {
+    return alert('extention du fichier doit être soit de .jpg, .jpeg ou .png')
+  }
+
   extensionCorrecte () {
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
     let extension
@@ -30,6 +35,7 @@ export default class NewBill {
     }
     return bExtensionCorrecte
   }
+
   handleChangeFile = e => {
     e.preventDefault()
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
@@ -55,9 +61,10 @@ export default class NewBill {
           this.fileName = fileName
         }).catch(error => console.error(error))
     } else {
-      alert('extention du fichier doit être soit de .jpg, .jpeg ou .png')
+      this.alerteExtension()
     }
   }
+  
   handleSubmit = e => {
     e.preventDefault()
     console.log('e.target.querySelector(`input[data-testid="datepicker"]`).value', e.target.querySelector(`input[data-testid="datepicker"]`).value)
@@ -79,7 +86,7 @@ export default class NewBill {
       this.updateBill(bill)
       this.onNavigate(ROUTES_PATH.Bills)
     } else {
-      alert('extention du fichier doit être soit de .jpg, .jpeg ou .png')
+      this.alerteExtension()
     }
     
   }

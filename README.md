@@ -1,94 +1,90 @@
+![logo-du-projet](https://github.com/CathelineOnceUponATime/Billed-app-FR-Front/blob/main/src/assets/images/Logo%20Billed.png)
 
-## L'architecture du projet :
-Ce projet, dit frontend, est connecté à un service API backend que vous devez aussi lancer en local.
+# Billed
+> Projet 9 - Débuggez et testez un SaaS RH
+## Author 
 
-Le projet backend se trouve ici: https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-back
+- Catheline GRAPPIN
 
-## Organiser son espace de travail :
-Pour une bonne organization, vous pouvez créer un dossier bill-app dans lequel vous allez cloner le projet backend et par la suite, le projet frontend:
+## Technologies
 
-Clonez le projet backend dans le dossier bill-app :
-```
-$ git clone https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-Back.git
-```
+- [![Made-with-Jest](https://img.shields.io/badge/Made%20with-Jest-red)](https://jestjs.io/fr/docs/getting-started)
 
-```
-bill-app/
-   - Billed-app-FR-Back
-```
+## Environments
 
-Clonez le projet frontend dans le dossier bill-app :
-```
-$ git clone https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-Front.git
-```
+https://cathelineonceuponatime.github.io/Billed-app-FR-Front/
 
-```
-bill-app/
-   - Billed-app-FR-Back
-   - Billed-app-FR-Front
-```
+## Resources provided
 
-## Comment lancer l'application en local ?
+https://www.notion.so/a7a612fc166747e78d95aa38106a55ec?v=2a8d3553379c4366b6f66490ab8f0b90
 
-### étape 1 - Lancer le backend :
+https://s3.eu-west-1.amazonaws.com/course.oc-static.com/projects/DA+JSR_P9/Billed+-+Description+des+fonctionnalite%CC%81s.pdf
 
-Suivez les indications dans le README du projet backend.
+https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-Front
 
-### étape 2 - Lancer le frontend :
+https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-Back
 
-Allez au repo cloné :
-```
-$ cd Billed-app-FR-Front
-```
+## Installation
 
-Installez les packages npm (décrits dans `package.json`) :
-```
-$ npm install
-```
+### Prerequisites
 
-Installez live-server pour lancer un serveur local :
-```
-$ npm install -g live-server
-```
+- [![npm-v_7.24.1](https://img.shields.io/badge/npm-v_7.24.1-orange)](https://docs.npmjs.com/)
+- [![NodeJs-v_16.10.0](https://img.shields.io/badge/NodeJs-v_16.10.0-red)](https://nodejs.org/en/docs/)
 
-Lancez l'application :
-```
-$ live-server
-```
+- VSCode
 
-Puis allez à l'adresse : `http://127.0.0.1:8080/`
+### Installing and launching Back-End
 
+Clone the repository of Billed Back-End:
 
-## Comment lancer tous les tests en local avec Jest ?
+`git clone https://github.com/CathelineOnceUponATime/Billed-app-FR-Back.git`
 
-```
-$ npm run test
-```
+Inside this back-end repository, install dependencies:
 
-## Comment lancer un seul test ?
+`npm install`
 
-Installez jest-cli :
+Launch back-end :
 
-```
-$npm i -g jest-cli@26.6.3
-$jest src/__tests__/your_test_file.js
-```
+`npm run run:dev`
 
-## Comment voir la couverture de test ?
+### Installing and launching Front-end
+
+Clone the repository of Billed Front-End:
+
+`git clone https://github.com/CathelineOnceUponATime/Billed-app-FR-Front.git`
+
+Inside this Front-End repository, install dependencies:
+
+`npm install`
+`npm install -g live-server`
+
+Lauch Front-End in `http://127.0.0.1:8080/` :
+
+`live-server`
+
+Launch all test in local machine :
+
+`npm run test `
+
+Launch 1 test in local machine :
+
+`npm i -g jest-cli@26.6.3`
+`jest src/__tests__/your_test_file.js`
+
+See coverage test : 
 
 `http://127.0.0.1:8080/coverage/lcov-report/`
 
-## Comptes et utilisateurs :
 
-Vous pouvez vous connecter en utilisant les comptes:
+### Users :
 
-### administrateur : 
-```
-utilisateur : admin@test.tld 
-mot de passe : admin
-```
-### employé :
-```
-utilisateur : employee@test.tld
-mot de passe : employee
-```
+#### admin : 
+
+- username : admin@test.tld 
+- password : admin
+
+#### employee :
+
+- username : employee@test.tld
+- password : employee
+

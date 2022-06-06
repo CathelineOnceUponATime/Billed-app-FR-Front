@@ -4,9 +4,14 @@
 import { screen, fireEvent } from '@testing-library/dom'
 import { ROUTES } from '../constants/routes'
 import { localStorageMock } from '../__mocks__/localStorage.js'
+import firebase from '../__mocks__/firebase'
+import mockStore from '../__mocks__/store'
 import NewBillUI from '../views/NewBillUI.js'
+import BillsUI from '../views/BillsUI.js'
 import NewBill from '../containers/NewBill.js'
 import store from '../app/Store.js'
+
+jest.mock('../app/store', () => mockStore)
 
 const NOTE = {
   type: 'Hôtel et logement',
@@ -113,6 +118,32 @@ describe('Given I am connected as an employee', () => {
       form.addEventListener('submit', handleSubmit)
       fireEvent.submit(form)
       expect(handleSubmit).toHaveBeenCalled()
+    })
+
+    test('Fetch Bills from mock API POST', async () => {
+      const postSpy = jest.spyOn(firebase, 'post')
+      const bills = await firebase.post()
+      expect(postSpy).toHaveBeenCalledTimes(1)
+      expect(bills.length).toBe(4)
+    })
+
+    test('fetches bills from an API and fails with 404 message error', async () => {
+      firebase.post.mockImplementationOnce(() =>
+        Promise.reject(new Error('Erreur 404'))
+      )
+      const html = BillsUI({ error: 'Erreur 404' })
+      document.body.innerHTML = html
+      const message = await screen.getByText(/Erreur 404/)
+      expect(message).toBeTruthy()
+    })
+    test('fetches messages from an API and fails with 500 message error', async () => {
+      firebase.post.mockImplementationOnce(() =>
+        Promise.reject(new Error('Erreur 500'))
+      )
+      const html = BillsUI({ error: 'Erreur 500' })
+      document.body.innerHTML = html
+      const message = await screen.getByText(/Erreur 500/)
+      expect(message).toBeTruthy()
     })
   })
 })

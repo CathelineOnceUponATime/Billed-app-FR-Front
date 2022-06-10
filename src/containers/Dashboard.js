@@ -147,7 +147,6 @@ export default class {
 
     bills.forEach(bill => {
       $(`#open-bill${bill.id}`).click((e) => {
-        console.log(e)
         if (e.target.closest(`#status-bills-container${index}`)) {
           this.handleEditTicket(e, bill, bills)
         }

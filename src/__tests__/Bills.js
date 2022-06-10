@@ -34,7 +34,6 @@ describe('Given I am connected as an employee', () => {
       iconEye.addEventListener('click', handleClickIconEye)
       fireEvent.click(iconEye)
       expect(handleClickIconEye).toHaveBeenCalled()
-      // expect(modalImg).toHaveClass('show')
       expect(iconEye).toHaveAttribute('data-bill-url')
     })
 

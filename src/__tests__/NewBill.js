@@ -101,9 +101,6 @@ describe('Given I am connected as an employee', () => {
       fireEvent.change(inputCommentaire, { target: { value: NOTE.commentary } })
       expect(inputCommentaire.value).toBe(NOTE.commentary)
 
-      /* unBill.fileUrl = NOTE.fileUrl
-      unBill.fileName = NOTE.fileName */
-
       const file = screen.getByTestId('file')
       const handleChangeFile = jest.fn(() => unBill.handleChangeFile)
       file.addEventListener('change', handleChangeFile)
@@ -136,6 +133,7 @@ describe('Given I am connected as an employee', () => {
       const message = await screen.getByText(/Erreur 404/)
       expect(message).toBeTruthy()
     })
+
     test('fetches messages from an API and fails with 500 message error', async () => {
       firebase.post.mockImplementationOnce(() =>
         Promise.reject(new Error('Erreur 500'))

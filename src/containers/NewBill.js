@@ -17,7 +17,7 @@ export default class NewBill {
   }
 
   alerteExtension() {
-    return alert('extention du fichier doit être soit de .jpg, .jpeg ou .png')
+    return alert('l\'extention du fichier doit être soit de .jpg, .jpeg ou .png')
   }
 
   extensionCorrecte () {

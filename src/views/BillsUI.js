@@ -21,11 +21,8 @@ const row = (bill) => {
 
 const rows = (data) => {
   data = data || []
-  const sortByMapped = (map, compareFn) => (a, b) => compareFn(map(a), map(b))
-  const byValue = (a, b) => b - a
-  const toTri = e => new Date(e.date).getTime()
-  const byDate = sortByMapped(toTri, byValue)
-  data.sort(byDate)
+  const antiChrono = (a, b) => ((new Date(a.originalDate || a.date) < new Date(b.originalDate || b.date)) ? 1 : -1)
+  data.sort(antiChrono)
   return (data && data.length) ? data.map(bill => row(bill)).join('') : ''
 }
 
